@@ -202,7 +202,11 @@ function removeLocalTodos(todo) {
     //Get index of todo that needs to be deleted, and splice it from todo storage and completed storage, if applicable
     const todoIndex = todo.children[0].innerText;
     todos.splice(todos.indexOf(todoIndex), 1);
-    Ctodos.splice(Ctodos.indexOf(todoIndex), 1);
+    for(let i = 0; i < Ctodos.length; i++){
+        if(todoIndex == Ctodos[i]){
+            Ctodos.splice(Ctodos.indexOf(todoIndex), 1);
+        }
+    }
     localStorage.setItem('todos', JSON.stringify(todos));
     localStorage.setItem('completed', JSON.stringify(Ctodos));
 }
